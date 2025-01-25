@@ -1,100 +1,404 @@
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Check,
+  ChevronRight,
+  Github,
+  Layers,
+  Layout,
+  Mail,
+  Twitter,
+  Wand2,
+} from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="flex min-h-screen flex-col">
+      {/* Header */}
+      <header className="px-4 lg:px-6 h-16 flex items-center border-b">
+        <Link className="flex items-center justify-center" href="#">
+          <Mail className="h-6 w-6" />
+          <span className="ml-2 text-xl font-bold">EmailCraft</span>
+        </Link>
+        <nav className="ml-auto flex gap-4 sm:gap-6">
+          <Link
+            className="text-sm font-medium hover:underline underline-offset-4"
+            href="#features"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Features
+          </Link>
+          <Link
+            className="text-sm font-medium hover:underline underline-offset-4"
+            href="#templates"
           >
-            Read our docs
-          </a>
+            Templates
+          </Link>
+          <Link
+            className="text-sm font-medium hover:underline underline-offset-4"
+            href="#pricing"
+          >
+            Pricing
+          </Link>
+        </nav>
+        <div className="ml-4 flex items-center gap-4">
+          <Button variant="ghost" size="sm">
+            Log in
+          </Button>
+          <Button size="sm">Get Started</Button>
         </div>
+      </header>
+
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-8 text-center">
+              <div className="space-y-4">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none max-w-3xl mx-auto">
+                  Create Beautiful Email Templates in Minutes
+                </h1>
+                <p className="max-w-[600px] mx-auto text-gray-500 md:text-xl">
+                  Design stunning email templates with our intuitive
+                  drag-and-drop builder. No coding required.
+                </p>
+              </div>
+              <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                <Button size="lg">
+                  Start Building
+                  <ChevronRight className="ml-2 h-4 w-4" />
+                </Button>
+                <Button variant="outline" size="lg">
+                  View Templates
+                </Button>
+              </div>
+              <Image
+                src="/placeholder.svg?height=550&width=550"
+                width={550}
+                height={550}
+                alt="Email Builder Interface"
+                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section
+          className="w-full py-12 md:py-24 lg:py-32 bg-gray-50"
+          id="features"
+        >
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+                  Everything You Need to Create Perfect Emails
+                </h2>
+                <p className="max-w-[900px] text-gray-500 md:text-xl">
+                  Powerful features that make email template creation a breeze
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3">
+              <Card>
+                <CardHeader>
+                  <Wand2 className="h-10 w-10 mb-4" />
+                  <CardTitle>Drag & Drop Builder</CardTitle>
+                  <CardDescription>
+                    Intuitive interface for creating emails without any coding
+                    knowledge
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <Layout className="h-10 w-10 mb-4" />
+                  <CardTitle>Responsive Design</CardTitle>
+                  <CardDescription>
+                    Templates that look perfect on all devices and email clients
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <Layers className="h-10 w-10 mb-4" />
+                  <CardTitle>Template Library</CardTitle>
+                  <CardDescription>
+                    Start with our pre-built templates and customize them to
+                    your needs
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Templates Showcase */}
+        <section className="w-full py-12 md:py-24 lg:py-32" id="templates">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+                  Start with Beautiful Templates
+                </h2>
+                <p className="max-w-[900px] text-gray-500 md:text-xl">
+                  Choose from our collection of professionally designed
+                  templates
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-5xl gap-6 py-12 lg:grid-cols-3">
+              {[1, 2, 3].map((i) => (
+                <Card key={i} className="overflow-hidden">
+                  <CardContent className="p-0">
+                    <Image
+                      src={`/placeholder.svg?height=400&width=300`}
+                      width={300}
+                      height={400}
+                      alt={`Template ${i}`}
+                      className="object-cover w-full"
+                    />
+                  </CardContent>
+                  <CardHeader>
+                    <CardTitle>Template {i}</CardTitle>
+                    <CardDescription>
+                      Professional email template for your needs
+                    </CardDescription>
+                    <Button className="mt-4">Use Template</Button>
+                  </CardHeader>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* How it Works */}
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+                  How It Works
+                </h2>
+                <p className="max-w-[900px] text-gray-500 md:text-xl">
+                  Create stunning email templates in three simple steps
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-5xl gap-6 py-12 lg:grid-cols-3">
+              {[
+                {
+                  step: "1",
+                  title: "Choose a Template",
+                  description:
+                    "Select from our library of professional templates",
+                },
+                {
+                  step: "2",
+                  title: "Customize Design",
+                  description:
+                    "Modify colors, images, and content to match your brand",
+                },
+                {
+                  step: "3",
+                  title: "Export & Send",
+                  description:
+                    "Download your template or send directly through our platform",
+                },
+              ].map((item) => (
+                <div
+                  key={item.step}
+                  className="flex flex-col items-center space-y-2 text-center"
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                    {item.step}
+                  </div>
+                  <h3 className="text-xl font-bold">{item.title}</h3>
+                  <p className="text-gray-500">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32" id="pricing">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+                  Simple, Transparent Pricing
+                </h2>
+                <p className="max-w-[900px] text-gray-500 md:text-xl">
+                  Choose the perfect plan for your needs
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-5xl gap-6 py-12 lg:grid-cols-3">
+              {[
+                {
+                  title: "Starter",
+                  price: "$0",
+                  description: "Perfect for trying out our features",
+                  features: ["5 Templates", "Basic Editor", "Email Support"],
+                },
+                {
+                  title: "Pro",
+                  price: "$29",
+                  description: "Best for professionals",
+                  features: [
+                    "Unlimited Templates",
+                    "Advanced Editor",
+                    "Priority Support",
+                    "Custom Branding",
+                  ],
+                },
+                {
+                  title: "Enterprise",
+                  price: "Custom",
+                  description: "For large organizations",
+                  features: [
+                    "Custom Templates",
+                    "API Access",
+                    "Dedicated Support",
+                    "Team Collaboration",
+                  ],
+                },
+              ].map((plan) => (
+                <Card key={plan.title} className="flex flex-col">
+                  <CardHeader>
+                    <CardTitle className="text-xl">{plan.title}</CardTitle>
+                    <CardDescription>{plan.description}</CardDescription>
+                    <p className="text-4xl font-bold">{plan.price}</p>
+                    {plan.price !== "Custom" && (
+                      <p className="text-sm text-gray-500">/month</p>
+                    )}
+                  </CardHeader>
+                  <CardContent className="flex flex-col gap-4">
+                    <ul className="space-y-2">
+                      {plan.features.map((feature) => (
+                        <li key={feature} className="flex items-center">
+                          <Check className="mr-2 h-4 w-4 text-green-500" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <Button className="mt-auto">Get Started</Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center text-primary-foreground">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+                  Ready to Create Amazing Emails?
+                </h2>
+                <p className="mx-auto max-w-[600px] text-primary-foreground/80 md:text-xl">
+                  Join thousands of users who create beautiful email templates
+                  with EmailCraft
+                </p>
+              </div>
+              <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                <Button size="lg" variant="secondary">
+                  Get Started for Free
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-transparent text-primary-foreground border-primary-foreground"
+                >
+                  Contact Sales
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Footer */}
+      <footer className="w-full py-6 pt-20 bg-gray-50">
+        <div className="container px-4 md:px-6">
+          <div className="grid gap-8 lg:grid-cols-4">
+            <div className="space-y-4">
+              <Link className="flex items-center" href="#">
+                <Mail className="h-6 w-6" />
+                <span className="ml-2 text-xl font-bold">EmailCraft</span>
+              </Link>
+              <p className="text-sm text-gray-500">
+                Beautiful email templates made simple.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-sm font-bold">Product</h3>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <Link className="text-gray-500 hover:text-gray-900" href="#">
+                    Features
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-gray-500 hover:text-gray-900" href="#">
+                    Templates
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-gray-500 hover:text-gray-900" href="#">
+                    Pricing
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-sm font-bold">Company</h3>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <Link className="text-gray-500 hover:text-gray-900" href="#">
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-gray-500 hover:text-gray-900" href="#">
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-gray-500 hover:text-gray-900" href="#">
+                    Careers
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-sm font-bold">Connect</h3>
+              <div className="flex space-x-4">
+                <Link href="#" className="text-gray-500 hover:text-gray-900">
+                  <Twitter className="h-5 w-5" />
+                  <span className="sr-only">Twitter</span>
+                </Link>
+                <Link href="#" className="text-gray-500 hover:text-gray-900">
+                  <Github className="h-5 w-5" />
+                  <span className="sr-only">GitHub</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 border-t pt-8 text-center text-sm text-gray-500">
+            © {new Date().getFullYear()} EmailCraft. All rights reserved.
+          </div>
+        </div>
       </footer>
     </div>
   );
