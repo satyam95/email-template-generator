@@ -9,53 +9,15 @@ import {
 import {
   Check,
   ChevronRight,
-  Github,
   Layers,
   Layout,
-  Mail,
-  Twitter,
   Wand2,
 } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
-      {/* Header */}
-      <header className="px-4 lg:px-6 h-16 flex items-center border-b">
-        <Link className="flex items-center justify-center" href="#">
-          <Mail className="h-6 w-6" />
-          <span className="ml-2 text-xl font-bold">EmailCraft</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="#features"
-          >
-            Features
-          </Link>
-          <Link
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="#templates"
-          >
-            Templates
-          </Link>
-          <Link
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="#pricing"
-          >
-            Pricing
-          </Link>
-        </nav>
-        <div className="ml-4 flex items-center gap-4">
-          <Button variant="ghost" size="sm">
-            Log in
-          </Button>
-          <Button size="sm">Get Started</Button>
-        </div>
-      </header>
-
       <main className="flex-1">
         {/* Hero Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
@@ -80,16 +42,15 @@ export default function Home() {
                 </Button>
               </div>
               <Image
-                src="/placeholder.svg?height=550&width=550"
-                width={550}
-                height={550}
+                src="/landing.png"
+                width={1000}
+                height={800}
                 alt="Email Builder Interface"
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover"
               />
             </div>
           </div>
         </section>
-
         {/* Features Section */}
         <section
           className="w-full py-12 md:py-24 lg:py-32 bg-gray-50"
@@ -327,79 +288,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-
-      {/* Footer */}
-      <footer className="w-full py-6 pt-20 bg-gray-50">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-8 lg:grid-cols-4">
-            <div className="space-y-4">
-              <Link className="flex items-center" href="#">
-                <Mail className="h-6 w-6" />
-                <span className="ml-2 text-xl font-bold">EmailCraft</span>
-              </Link>
-              <p className="text-sm text-gray-500">
-                Beautiful email templates made simple.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-sm font-bold">Product</h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link className="text-gray-500 hover:text-gray-900" href="#">
-                    Features
-                  </Link>
-                </li>
-                <li>
-                  <Link className="text-gray-500 hover:text-gray-900" href="#">
-                    Templates
-                  </Link>
-                </li>
-                <li>
-                  <Link className="text-gray-500 hover:text-gray-900" href="#">
-                    Pricing
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-sm font-bold">Company</h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link className="text-gray-500 hover:text-gray-900" href="#">
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link className="text-gray-500 hover:text-gray-900" href="#">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link className="text-gray-500 hover:text-gray-900" href="#">
-                    Careers
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-sm font-bold">Connect</h3>
-              <div className="flex space-x-4">
-                <Link href="#" className="text-gray-500 hover:text-gray-900">
-                  <Twitter className="h-5 w-5" />
-                  <span className="sr-only">Twitter</span>
-                </Link>
-                <Link href="#" className="text-gray-500 hover:text-gray-900">
-                  <Github className="h-5 w-5" />
-                  <span className="sr-only">GitHub</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="mt-8 border-t pt-8 text-center text-sm text-gray-500">
-            © {new Date().getFullYear()} EmailCraft. All rights reserved.
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
