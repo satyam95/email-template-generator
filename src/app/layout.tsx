@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { ConvexClientProvider } from "./ConvexClientProvider";
 import GoogleProvider from "./GoogleOAuthProvider";
 import UserDetailContextProvider from "@/context/UserDetailContext";
+import ScreenSizeContextProvider from "@/context/ScreenSizeContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +35,9 @@ export default function RootLayout({
       >
         <ConvexClientProvider>
           <GoogleProvider>
-            <UserDetailContextProvider>{children}</UserDetailContextProvider>
+            <UserDetailContextProvider>
+              <ScreenSizeContextProvider>{children}</ScreenSizeContextProvider>
+            </UserDetailContextProvider>
           </GoogleProvider>
         </ConvexClientProvider>
       </body>
