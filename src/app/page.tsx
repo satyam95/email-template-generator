@@ -1,4 +1,6 @@
+import Footer from "@/components/Footer";
 import GoogleSigninBtn from "@/components/GoogleSigninBtn";
+import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,6 +15,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
+      <Header />
       <main className="flex-1">
         {/* Hero Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
@@ -281,6 +284,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   );
 }

@@ -34,11 +34,7 @@ export default function RootLayout({
       >
         <ConvexClientProvider>
           <GoogleProvider>
-            <UserDetailContextProvider>
-              <Header />
-              {children}
-              <Footer />
-            </UserDetailContextProvider>
+            <UserDetailContextProvider>{children}</UserDetailContextProvider>
           </GoogleProvider>
         </ConvexClientProvider>
       </body>
