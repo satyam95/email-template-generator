@@ -7,6 +7,8 @@ import { ConvexClientProvider } from "./ConvexClientProvider";
 import GoogleProvider from "./GoogleOAuthProvider";
 import UserDetailContextProvider from "@/context/UserDetailContext";
 import ScreenSizeContextProvider from "@/context/ScreenSizeContext";
+import DragDropLayoutElementProvider from "@/context/DragDropLayoutElement";
+import EmailTemplateContextProvider from "@/context/EmailTemplateContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +38,13 @@ export default function RootLayout({
         <ConvexClientProvider>
           <GoogleProvider>
             <UserDetailContextProvider>
-              <ScreenSizeContextProvider>{children}</ScreenSizeContextProvider>
+              <ScreenSizeContextProvider>
+                <DragDropLayoutElementProvider>
+                  <EmailTemplateContextProvider>
+                    {children}
+                  </EmailTemplateContextProvider>
+                </DragDropLayoutElementProvider>
+              </ScreenSizeContextProvider>
             </UserDetailContextProvider>
           </GoogleProvider>
         </ConvexClientProvider>
