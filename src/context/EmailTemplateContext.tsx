@@ -1,5 +1,11 @@
 "use client";
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 // Define the context type
 interface EmailTemplateContextType {
@@ -8,7 +14,9 @@ interface EmailTemplateContextType {
 }
 
 // Initialize the context with a default value of `null`
-const EmailTemplateContext = createContext<EmailTemplateContextType | null>(null);
+const EmailTemplateContext = createContext<EmailTemplateContextType | null>(
+  null
+);
 
 const EmailTemplateContextProvider = ({
   children,
@@ -17,6 +25,12 @@ const EmailTemplateContextProvider = ({
 }) => {
   const [emailTemplate, setEmailTemplate] = useState<any[]>([]); // Replace `any` with the specific type if possible
 
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      localStorage.setItem("emailTemplate", JSON.stringify(emailTemplate));
+    }
+  }, [emailTemplate]);
+  
   return (
     <EmailTemplateContext.Provider value={{ emailTemplate, setEmailTemplate }}>
       {children}

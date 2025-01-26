@@ -7,6 +7,7 @@ import React, {
   useState,
   ReactNode,
 } from "react";
+import { useEmailTemplate } from "./EmailTemplateContext";
 
 interface UserDetail {
   email?: string;
@@ -26,10 +27,15 @@ const UserDetailContext = createContext<UserDetailContextType | undefined>(
 
 const UserDetailContextProvider = ({ children }: { children: ReactNode }) => {
   const [userDetail, setUserDetail] = useState<UserDetail | null>(null);
+  const { setEmailTemplate } = useEmailTemplate();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storage = localStorage.getItem("userDetail");
+      const emailTemplateStorage = JSON.parse(
+        localStorage.getItem("emailTemplate")
+      );
+      setEmailTemplate(emailTemplateStorage ?? []);
       if (storage) {
         const parsedStorage = JSON.parse(storage) as UserDetail;
         if (parsedStorage.email) {

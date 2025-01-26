@@ -37,15 +37,15 @@ export default function RootLayout({
       >
         <ConvexClientProvider>
           <GoogleProvider>
-            <UserDetailContextProvider>
-              <ScreenSizeContextProvider>
-                <DragDropLayoutElementProvider>
-                  <EmailTemplateContextProvider>
+            <EmailTemplateContextProvider>
+              <UserDetailContextProvider>
+                <ScreenSizeContextProvider>
+                  <DragDropLayoutElementProvider>
                     {children}
-                  </EmailTemplateContextProvider>
-                </DragDropLayoutElementProvider>
-              </ScreenSizeContextProvider>
-            </UserDetailContextProvider>
+                  </DragDropLayoutElementProvider>
+                </ScreenSizeContextProvider>
+              </UserDetailContextProvider>
+            </EmailTemplateContextProvider>
           </GoogleProvider>
         </ConvexClientProvider>
       </body>
