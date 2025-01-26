@@ -1,4 +1,12 @@
-import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
+"use client";
+
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
 
 interface UserDetail {
   email?: string;
@@ -12,7 +20,9 @@ interface UserDetailContextType {
   setUserDetail: React.Dispatch<React.SetStateAction<UserDetail | null>>;
 }
 
-const UserDetailContext = createContext<UserDetailContextType | undefined>(undefined);
+const UserDetailContext = createContext<UserDetailContextType | undefined>(
+  undefined
+);
 
 const UserDetailContextProvider = ({ children }: { children: ReactNode }) => {
   const [userDetail, setUserDetail] = useState<UserDetail | null>(null);
@@ -41,7 +51,9 @@ export default UserDetailContextProvider;
 export const useUserDetail = () => {
   const context = useContext(UserDetailContext);
   if (!context) {
-    throw new Error("useUserDetailContext must be used within a UserDetailContextProvider");
+    throw new Error(
+      "useUserDetailContext must be used within a UserDetailContextProvider"
+    );
   }
   return context;
 };
