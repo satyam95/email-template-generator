@@ -1,3 +1,4 @@
+import GoogleSigninBtn from "@/components/GoogleSigninBtn";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -6,13 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Check,
-  ChevronRight,
-  Layers,
-  Layout,
-  Wand2,
-} from "lucide-react";
+import { Check, ChevronRight, Layers, Layout, Wand2 } from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
@@ -37,9 +32,7 @@ export default function Home() {
                   Start Building
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button variant="outline" size="lg">
-                  View Templates
-                </Button>
+                <GoogleSigninBtn />
               </div>
               <Image
                 src="/landing.png"

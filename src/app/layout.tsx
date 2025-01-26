@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ConvexClientProvider } from "./ConvexClientProvider";
+import GoogleProvider from "./GoogleOAuthProvider";
+import UserDetailContextProvider from "@/context/UserDetailContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,9 +33,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ConvexClientProvider>
-          <Header />
-          {children}
-          <Footer />
+          <GoogleProvider>
+            <UserDetailContextProvider>
+              <Header />
+              {children}
+              <Footer />
+            </UserDetailContextProvider>
+          </GoogleProvider>
         </ConvexClientProvider>
       </body>
     </html>
