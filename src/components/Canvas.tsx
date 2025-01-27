@@ -2,15 +2,17 @@
 import { useDragElementLayout } from "@/context/DragDropLayoutElement";
 import { useEmailTemplate } from "@/context/EmailTemplateContext";
 import { useScreenSize } from "@/context/ScreenSizeContext";
-import React, { useState, DragEvent } from "react";
+import React, { useState, DragEvent, useRef, useEffect } from "react";
 import ColumnLayout from "./LayoutElements/ColumnLayout";
+import ViewHtmlDialog from "./ViewHtmlDialog";
 
-const Canvas = () => {
+const Canvas = ({viewHTMLCode, closeDialog}) => {
+  const htmlRef = useRef();
   const { screenSize } = useScreenSize();
   const { dragElementLayout } = useDragElementLayout();
   const { emailTemplate, setEmailTemplate } = useEmailTemplate();
   const [dragOver, setDragOver] = useState(false);
-
+const [htmlCode, setHtmlCode] = useState()
   // Handle drag over event
   const onDragOver = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -36,6 +38,18 @@ const Canvas = () => {
     }
   };
 
+  useEffect(() => {
+    viewHTMLCode && GetHTMLCode();
+  }, [viewHTMLCode])
+
+  const GetHTMLCode = () => {
+    if(htmlRef.current) {
+      const htmlContent = htmlRef.current.innerHTML;
+      console.log(htmlContent)
+      setHtmlCode(htmlContent)
+    }
+  }
+
   return (
     <div className="mt-20 flex justify-center">
       <div
@@ -45,6 +59,7 @@ const Canvas = () => {
         onDragOver={onDragOver}
         onDragLeave={onDragLeave}
         onDrop={onDropHandle}
+        ref={htmlRef}
       >
         {emailTemplate?.length > 0 ? (
           emailTemplate?.map((layout, index) => (
@@ -56,6 +71,7 @@ const Canvas = () => {
           </h2>
         )}
       </div>
+      <ViewHtmlDialog openDialog={viewHTMLCode} htmlCode={htmlCode} closeDialog={closeDialog} />
     </div>
   );
 };

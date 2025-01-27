@@ -6,9 +6,17 @@ import ColorPickerField from "./Settings/ColorPickerField";
 import InputStyleField from "./Settings/InputStyleField";
 import SliderField from "./Settings/SliderField";
 import TextAreaField from "./Settings/TextAreaField";
-import { AArrowUp, AlignCenter, AlignLeft, AlignRight, CaseLower, CaseUpper } from "lucide-react";
+import {
+  AArrowUp,
+  AlignCenter,
+  AlignLeft,
+  AlignRight,
+  CaseLower,
+  CaseUpper,
+} from "lucide-react";
 import ToggleGroupField from "./Settings/ToggleGroupField";
 import DropdownField from "./Settings/DropdownField";
+import ImagePreview from "./Settings/ImagePreview";
 
 const TextAlignOptions = [
   {
@@ -76,9 +84,35 @@ const Settings = () => {
     setSelectedElement(updateElement);
   };
 
+  const onHandleOuterStyleChange = (fieldName, fieldValue) => {
+    let updateElement = {
+      ...selectedElement,
+      layout: {
+        ...selectedElement?.layout,
+        [selectedElement?.index]: {
+          ...selectedElement?.layout[selectedElement?.index],
+          outerStyle: {
+            ...selectedElement?.layout[selectedElement?.index]?.outerStyle,
+            [fieldName]: [fieldValue],
+          },
+        },
+      },
+    };
+    setSelectedElement(updateElement);
+  };
+
   return (
     <div className="p-5 flex flex-col gap-4">
       <h2 className="font-bold text-xl">Settings</h2>
+      {element?.imageUrl && (
+        <ImagePreview
+          label={"Image Preview"}
+          value={element?.imageUrl}
+          onHandleInputChange={(value) =>
+            onHandleInputChange("imageUrl", value)
+          }
+        />
+      )}
       {element?.content && (
         <InputField
           label={"Content"}
@@ -148,6 +182,13 @@ const Settings = () => {
           }
         />
       )}
+      {element?.style?.margin && (
+        <InputStyleField
+          label={"Margin"}
+          value={element?.style?.margin}
+          onHandleStyleChange={(value) => onHandleStyleChange("margin", value)}
+        />
+      )}
       {element?.style?.padding && (
         <InputStyleField
           label={"Padding"}
@@ -176,11 +217,35 @@ const Settings = () => {
         <DropdownField
           label={"Font Weight"}
           value={element?.style?.fontWeight}
-          options={['normal', 'bold']}
-          onHandleStyleChange={(value) => onHandleStyleChange("fontWeight", value)}
+          options={["normal", "bold"]}
+          onHandleStyleChange={(value) =>
+            onHandleStyleChange("fontWeight", value)
+          }
         />
       )}
-      
+
+      <div>
+        <h2 className="font-bold mb-2">Outer Style</h2>
+        {element?.outerStyle?.backgroundColor && (
+          <ColorPickerField
+            label={"Background Color"}
+            value={element?.outerStyle?.backgroundColor}
+            onHandleStyleChange={(value) =>
+              onHandleOuterStyleChange("backgroundColor", value)
+            }
+          />
+        )}
+        {element?.outerStyle?.justifyContent && (
+        <ToggleGroupField
+          label={"Align"}
+          value={element?.outerStyle?.justifyContent}
+          options={TextAlignOptions}
+          onHandleStyleChange={(value) =>
+            onHandleOuterStyleChange("justifyContent", value)
+          }
+        />
+      )}
+      </div>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React from 'react'
 
-const LogoComponent = ({style, imageUrl, outStyle}) => {
+const LogoComponent = ({style, imageUrl, outerStyle}) => {
   return (
-    <div style={outStyle}>
+    <div style={outerStyle}>
         <img src={imageUrl} alt='logo' style={style} />
     </div>
   )
