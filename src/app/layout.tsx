@@ -9,6 +9,7 @@ import UserDetailContextProvider from "@/context/UserDetailContext";
 import ScreenSizeContextProvider from "@/context/ScreenSizeContext";
 import DragDropLayoutElementProvider from "@/context/DragDropLayoutElement";
 import EmailTemplateContextProvider from "@/context/EmailTemplateContext";
+import SelectedElementProvider from "@/context/SelectedElementContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,7 +42,9 @@ export default function RootLayout({
               <UserDetailContextProvider>
                 <ScreenSizeContextProvider>
                   <DragDropLayoutElementProvider>
-                    {children}
+                    <SelectedElementProvider>
+                      {children}
+                    </SelectedElementProvider>
                   </DragDropLayoutElementProvider>
                 </ScreenSizeContextProvider>
               </UserDetailContextProvider>

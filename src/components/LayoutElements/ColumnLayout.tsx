@@ -7,11 +7,13 @@ import TextComponent from "../Element/TextComponent";
 import ImageComponent from "../Element/ImageComponent";
 import LogoComponent from "../Element/LogoComponent";
 import DividerComponent from "../Element/DividerComponent";
+import { useSelectedElement } from "@/context/SelectedElementContext";
 
 const ColumnLayout = ({ layout }) => {
   const [dragOver, setDragOver] = useState();
   const { emailTemplate, setEmailTemplate } = useEmailTemplate();
   const { dragElementLayout, setDragElementLayout } = useDragElementLayout();
+  const { selectedElement, setSelectedElement } = useSelectedElement();
 
   const onDragOverHandle = (event, index) => {
     event.preventDefault();
@@ -60,9 +62,10 @@ const ColumnLayout = ({ layout }) => {
         {Array.from({ length: layout?.numOfCol }).map((_, index) => (
           <div
             key={index}
-            className={`p-2 flex justify-center items-center ${!layout?.[index]?.type && "bg-gray-100 border border-dashed"} ${index == dragOver?.index && dragOver?.columnId && "bg-green-100"}`}
+            className={`p-0 flex items-center h-full w-full cursor-pointer justify-center items-center ${!layout?.[index]?.type && "bg-gray-100 border border-dashed"} ${index == dragOver?.index && dragOver?.columnId && "bg-green-100"} ${selectedElement?.layout?.id == layout?.id && selectedElement?.index == index && "border-blue-500 border"}`}
             onDragOver={(event) => onDragOverHandle(event, index)}
             onDrop={onDropHandle}
+            onClick={() => setSelectedElement({ layout: layout, index: index })}
           >
             {GetElementComponent(layout?.[index]) ?? "Drag Element Here"}
           </div>
