@@ -31,19 +31,29 @@ const UserDetailContextProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      // Safely get userDetail from localStorage
       const storage = localStorage.getItem("userDetail");
-      const emailTemplateStorage = JSON.parse(
-        localStorage.getItem("emailTemplate")
-      );
-      setEmailTemplate(emailTemplateStorage ?? []);
+      const emailTemplateStorage = localStorage.getItem("emailTemplate");
+
+      // Parse email templates and handle undefined cases
+      const parsedEmailTemplate = emailTemplateStorage
+        ? JSON.parse(emailTemplateStorage)
+        : [];
+      setEmailTemplate(parsedEmailTemplate);
+
+      // Parse user details and handle undefined cases
       if (storage) {
-        const parsedStorage = JSON.parse(storage) as UserDetail;
-        if (parsedStorage.email) {
-          setUserDetail(parsedStorage);
+        try {
+          const parsedStorage = JSON.parse(storage) as UserDetail;
+          if (parsedStorage.email) {
+            setUserDetail(parsedStorage);
+          }
+        } catch (e) {
+          console.error("Error parsing userDetail from localStorage:", e);
         }
       }
     }
-  }, []);
+  }, [setEmailTemplate]);
 
   return (
     <UserDetailContext.Provider value={{ userDetail, setUserDetail }}>
@@ -58,7 +68,7 @@ export const useUserDetail = () => {
   const context = useContext(UserDetailContext);
   if (!context) {
     throw new Error(
-      "useUserDetailContext must be used within a UserDetailContextProvider"
+      "useUserDetail must be used within a UserDetailContextProvider"
     );
   }
   return context;

@@ -10,6 +10,7 @@ import ScreenSizeContextProvider from "@/context/ScreenSizeContext";
 import DragDropLayoutElementProvider from "@/context/DragDropLayoutElement";
 import EmailTemplateContextProvider from "@/context/EmailTemplateContext";
 import SelectedElementProvider from "@/context/SelectedElementContext";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,6 +52,7 @@ export default function RootLayout({
             </EmailTemplateContextProvider>
           </GoogleProvider>
         </ConvexClientProvider>
+        <Toaster />
       </body>
     </html>
   );
