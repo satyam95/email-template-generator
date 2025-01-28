@@ -10,7 +10,7 @@ import { api } from "../../convex/_generated/api";
 const EmailTemplateList = () => {
   const [emailList, setEmailList] = useState([]);
   const convex = useConvex();
-  const { userDetail, setUserDetail } = useUserDetail();
+  const { userDetail } = useUserDetail();
 
   useEffect(() => {
     userDetail && GetTemplateList();

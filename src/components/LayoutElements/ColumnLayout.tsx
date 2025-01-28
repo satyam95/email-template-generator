@@ -13,7 +13,7 @@ import { ArrowDown, ArrowUp, Trash } from "lucide-react";
 const ColumnLayout = ({ layout }) => {
   const [dragOver, setDragOver] = useState();
   const { emailTemplate, setEmailTemplate } = useEmailTemplate();
-  const { dragElementLayout, setDragElementLayout } = useDragElementLayout();
+  const { dragElementLayout } = useDragElementLayout();
   const { selectedElement, setSelectedElement } = useSelectedElement();
 
   const onDragOverHandle = (event, index) => {

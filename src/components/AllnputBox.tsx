@@ -15,7 +15,7 @@ const AllnputBox = () => {
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
   const SaveTemplate = useMutation(api.emailTemplate.SaveTemplate);
-  const { userDetail, setUserDetail } = useUserDetail();
+  const { userDetail } = useUserDetail();
   const router = useRouter();
 
   const OnGenerate = async () => {
@@ -48,7 +48,7 @@ const AllnputBox = () => {
   return (
     <div className="mt-5">
       <p className="mb-2">
-        Provide details about the email template you'd like to create
+        Provide details about the email template you would like to create
       </p>
       <Textarea
         placeholder="Start writing here..."

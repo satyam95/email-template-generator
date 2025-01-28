@@ -16,7 +16,7 @@ const EditorHeader = ({ viewHTMLCode }) => {
     api.emailTemplate.UpdateTemplateDesign
   );
   const { templateId } = useParams();
-  const { emailTemplate, setEmailTemplate } = useEmailTemplate();
+  const { emailTemplate } = useEmailTemplate();
 
   const onSaveTemplate = async () => {
     await updateEmailTemplate({

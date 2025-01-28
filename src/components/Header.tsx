@@ -8,7 +8,7 @@ import Image from "next/image";
 import GoogleSigninBtn from "./GoogleSigninBtn";
 
 const Header = () => {
-  const { userDetail, setUserDetail } = useUserDetail();
+  const { userDetail } = useUserDetail();
 
   return (
     <header className="px-4 lg:px-6 h-16 flex items-center border-b">

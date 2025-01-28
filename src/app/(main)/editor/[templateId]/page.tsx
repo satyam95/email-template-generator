@@ -11,11 +11,11 @@ import { api } from "../../../../../convex/_generated/api";
 import { useEmailTemplate } from "@/context/EmailTemplateContext";
 
 const Editor = () => {
-  const [viewHTMLCode, setViewHtmlCode] = useState();
-  const { templateId } = useParams();
-  const { userDetail, setUserDetail } = useUserDetail();
+  const [viewHTMLCode, setViewHtmlCode] = useState<boolean | undefined>(undefined);
+  const { templateId } = useParams() as { templateId: string };
+  const { userDetail } = useUserDetail();
   const [loading, setLoading] = useState(false);
-  const { emailTemplate, setEmailTemplate } = useEmailTemplate();
+  const { setEmailTemplate } = useEmailTemplate();
   const convex = useConvex();
 
   useEffect(() => {
@@ -25,19 +25,20 @@ const Editor = () => {
   }, [userDetail]);
 
   const GetTemplateData = async () => {
-    setLoading(true)
+    setLoading(true);
     const result = await convex.query(api.emailTemplate.GetTemplateDesign, {
       tid: templateId,
-      email: userDetail?.email,
+      email: userDetail?.email ?? "",
     });
 
     console.log(result);
-    setEmailTemplate(result?.design)
-    setLoading(false)
+    setEmailTemplate(result?.design ?? null); // Safely handle `result.design`
+    setLoading(false);
   };
+
   return (
     <div>
-      <EditorHeader viewHTMLCode={(v) => setViewHtmlCode(v)} />
+      <EditorHeader viewHTMLCode={(v: boolean) => setViewHtmlCode(v)} />
       {!loading ? (
         <div className="grid grid-cols-5">
           <ElementsSideBar />

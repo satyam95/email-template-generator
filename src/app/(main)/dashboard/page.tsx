@@ -5,7 +5,7 @@ import { useUserDetail } from "@/context/UserDetailContext";
 import React from "react";
 
 const Dashboard = () => {
-  const { userDetail, setUserDetail } = useUserDetail();
+  const { userDetail } = useUserDetail();
   return (
     <div>
       <div className="p-10 md:px-28 lg:px-40 xl:px-56 mt-8">
