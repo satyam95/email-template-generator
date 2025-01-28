@@ -7,10 +7,18 @@ import {
   useState,
 } from "react";
 
+// Define the type for your email template objects
+interface EmailTemplateType {
+  id: string; // Example: Unique identifier for the template
+  name: string; // Example: Name of the template
+  content: string; // Example: Content of the email template
+  [key: string]: unknown; // Allow additional properties if needed
+}
+
 // Define the context type
 interface EmailTemplateContextType {
-  emailTemplate: any[]; // Replace `any` with the specific type of your template objects
-  setEmailTemplate: React.Dispatch<React.SetStateAction<any[]>>; // Replace `any` with the specific type
+  emailTemplate: EmailTemplateType[];
+  setEmailTemplate: React.Dispatch<React.SetStateAction<EmailTemplateType[]>>;
 }
 
 // Initialize the context with a default value of `null`
@@ -23,14 +31,14 @@ const EmailTemplateContextProvider = ({
 }: {
   children: ReactNode;
 }) => {
-  const [emailTemplate, setEmailTemplate] = useState<any[]>([]); // Replace `any` with the specific type if possible
+  const [emailTemplate, setEmailTemplate] = useState<EmailTemplateType[]>([]);
 
   useEffect(() => {
-    if (typeof window !== undefined) {
+    if (typeof window !== "undefined") {
       localStorage.setItem("emailTemplate", JSON.stringify(emailTemplate));
     }
   }, [emailTemplate]);
-  
+
   return (
     <EmailTemplateContext.Provider value={{ emailTemplate, setEmailTemplate }}>
       {children}

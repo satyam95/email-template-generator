@@ -1,16 +1,10 @@
 import {
-  Columns2,
-  Facebook,
-  Frame,
-  Framer,
-  Image,
-  Link2,
-  PanelTop,
-  Projector,
   RectangleEllipsis,
-  SquareSplitVertical,
-  Text,
   TextSelectionIcon,
+  Image,
+  Frame,
+  PanelTop,
+  SquareSplitVertical,
   Twitter,
 } from "lucide-react";
 

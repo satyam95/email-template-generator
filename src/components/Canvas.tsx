@@ -39,8 +39,10 @@ const [htmlCode, setHtmlCode] = useState()
   };
 
   useEffect(() => {
-    viewHTMLCode && GetHTMLCode();
-  }, [viewHTMLCode])
+    if (viewHTMLCode) {
+      GetHTMLCode();
+    }
+  }, [viewHTMLCode]);
 
   const GetHTMLCode = () => {
     if(htmlRef.current) {

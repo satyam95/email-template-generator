@@ -13,7 +13,9 @@ const EmailTemplateList = () => {
   const { userDetail } = useUserDetail();
 
   useEffect(() => {
-    userDetail && GetTemplateList();
+    if (userDetail) {
+      GetTemplateList();
+    }
   }, [userDetail]);
 
   const GetTemplateList = async () => {

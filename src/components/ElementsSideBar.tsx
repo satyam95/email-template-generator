@@ -8,7 +8,7 @@ import { useDragElementLayout } from "@/context/DragDropLayoutElement";
 const ElementsSideBar = () => {
   const { setDragElementLayout } = useDragElementLayout();
 
-  const onDragLayoutStart = (layout: any) => {
+  const onDragLayoutStart = (layout) => {
     setDragElementLayout({
       dragLayout: {
         ...layout,

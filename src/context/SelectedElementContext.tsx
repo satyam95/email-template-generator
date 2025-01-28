@@ -16,7 +16,7 @@ const SelectedElementProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (selectedElement) {
-      let updatedEmailTemplates: typeof emailTemplate = []; // Ensure type consistency
+      const updatedEmailTemplates: typeof emailTemplate = []; // Ensure type consistency
       emailTemplate.forEach((item) => {
         if (item.id === selectedElement?.layout?.id) {
           updatedEmailTemplates.push(selectedElement?.layout); // Push updated element

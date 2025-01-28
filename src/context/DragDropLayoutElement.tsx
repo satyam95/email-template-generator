@@ -1,9 +1,15 @@
 "use client";
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useState, Dispatch, SetStateAction } from "react";
+
+// Define a type for dragElementLayout
+interface DragLayoutType {
+  type: string; // Example: "column", "row", etc.
+  properties?: Record<string, unknown>; // Example: additional properties
+}
 
 interface DragDropLayoutElementContextType {
-  dragElementLayout: any;
-  setDragElementLayout: React.Dispatch<React.SetStateAction<any>>;
+  dragElementLayout: DragLayoutType | null;
+  setDragElementLayout: Dispatch<SetStateAction<DragLayoutType | null>>;
 }
 
 const DragDropLayoutElement =
@@ -14,7 +20,7 @@ const DragDropLayoutElementProvider = ({
 }: {
   children: ReactNode;
 }) => {
-  const [dragElementLayout, setDragElementLayout] = useState<any>(null);
+  const [dragElementLayout, setDragElementLayout] = useState<DragLayoutType | null>(null);
 
   return (
     <DragDropLayoutElement.Provider

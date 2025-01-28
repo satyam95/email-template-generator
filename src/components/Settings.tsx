@@ -68,7 +68,7 @@ const Settings = () => {
   };
 
   const onHandleStyleChange = (fieldName, fieldValue) => {
-    let updateElement = {
+    const updateElement = {
       ...selectedElement,
       layout: {
         ...selectedElement?.layout,
@@ -85,7 +85,7 @@ const Settings = () => {
   };
 
   const onHandleOuterStyleChange = (fieldName, fieldValue) => {
-    let updateElement = {
+    const updateElement = {
       ...selectedElement,
       layout: {
         ...selectedElement?.layout,
